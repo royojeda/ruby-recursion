@@ -19,4 +19,19 @@ def fibs(number)
   result
 end
 
-p fibs(gets.chomp.to_i)
+def fibs_rec(number)
+  case number
+  when 0
+    []
+  when 1
+    fibs_rec(number - 1) + [0]
+  when 2
+    fibs_rec(number - 1) + [1]
+  else
+    arr = fibs_rec(number - 1)
+    arr.push(arr[-1] + arr[-2])
+  end
+end
+
+p fibs(8)
+p fibs_rec(8)
